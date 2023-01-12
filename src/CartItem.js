@@ -3,33 +3,33 @@ import React from "react";
 class CartItem extends React.Component{
 
 
-    increaseQuantity = () => {
-        // setState form 1
-        // this.setState({
-        //     qty: this.state.qty + 1
-        // });
+    // increaseQuantity = () => {
+    //     setState form 1
+    //     this.setState({
+    //         qty: this.state.qty + 1
+    //     });
 
-        // setstate Form 2 - if prev state required use this
-        this.setState((prevState) => {
-            return{
-                qty: prevState.qty + 1
-            }
-        });
-    }
+    //     setstate Form 2 - if prev state required use this
+    //     this.setState((prevState) => {
+    //         return{
+    //             qty: prevState.qty + 1
+    //         }
+    //     });
+    // }
 
-    decreaseQuantity = () => {
-        const {qty} = this.state;
+    // decreaseQuantity = () => {
+    //     const {qty} = this.state;
 
-        if(qty === 0){
-            return;
-        }
+    //     if(qty === 0){
+    //         return;
+    //     }
 
-        this.setState((prevState) => {
-           return{
-            qty: prevState.qty - 1
-           } 
-        });
-    }
+    //     this.setState((prevState) => {
+    //        return{
+    //         qty: prevState.qty - 1
+    //        } 
+    //     });
+    // }
 
     render(){
         const {price, title, qty} = this.props.product;
@@ -48,13 +48,13 @@ class CartItem extends React.Component{
                             alt = "increase"
                             className="action-icons" 
                             src = "https://cdn-icons-png.flaticon.com/512/992/992651.png" 
-                            onClick={this.increaseQuantity}
+                            onClick={() => this.props.handleIncreaseQuantity(this.props.product)}
                         />
                         <img
                             alt = "decrease"  
                             className="action-icons" 
                             src = "https://cdn-icons-png.flaticon.com/512/992/992683.png" 
-                            onClick={this.decreaseQuantity}
+                            onClick={() => this.props.handleDecreaseQuantity(this.props.product)}
                         />
                         <img 
                             alt = "delete" 
